@@ -63,7 +63,7 @@ public:
     
     PeriodData.open("Data.csv");
     PeriodData << "ID,SendTime,RecvTime,Size,offset\n";
-    sleep(1);
+    sleep(2);
     timer_synchronize();
     timer_client = this->create_wall_timer(
       30s, std::bind(&Listener::timer_synchronize, this));
@@ -74,8 +74,6 @@ public:
   void timer_synchronize()
   {
     
-    //for (int i=1; i<=3; i++)
-    //{
     if (!ntpclient->wait_for_service(10s))
     {
         RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Interrupted while waiting for the service. Exiting.");
