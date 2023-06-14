@@ -11,6 +11,7 @@
 #include "rcutils/cmdline_parser.h"
 #include "std_msgs/msg/string.hpp"
 #include "newtest/srv/time.hpp"
+#include <unistd.h>
 
 using namespace std::chrono_literals;
 using std::placeholders::_1;
@@ -38,11 +39,11 @@ public:
   Listener(): Node("PCListener"), count_(0)
   {
     ntpclient = this->create_client<newtest::srv::Time>("NTP");
-    timer_synchronize();
-
+    
     PeriodData.open("Data.csv");
     PeriodData << "ID,SendTime,RecvTime,Size,offset\n";
-    
+    sleep(2);
+    timer_synchronize();
     timer_client = this->create_wall_timer(
       30s, std::bind(&Listener::timer_synchronize, this));
     
