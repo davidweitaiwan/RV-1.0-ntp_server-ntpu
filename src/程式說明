@@ -1,0 +1,16 @@
+新更新的程式名稱
+clienttalker (RPI)
+serverlistener (PC)
+
+
+舊程式
+talkerserver (Rpi)
+listenerclient (PC)
+
+              以上是 Time offset + Publisher(talker) / Subscriber(listener)
+//----------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------
+
+只有 Time offset 的程式
+ntpserver
+ntpclient
